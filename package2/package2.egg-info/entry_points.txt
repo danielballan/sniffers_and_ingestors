@@ -1,3 +1,0 @@
-[databroker.ingestors]
-application/x-hdf = package2.ingestors:saxs_ingestor
-

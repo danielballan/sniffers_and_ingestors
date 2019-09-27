@@ -1,3 +1,5 @@
 *.h5
 *.tiff
 __pycache__/
+package1/package1.egg-info/
+package2/package2.egg-info/

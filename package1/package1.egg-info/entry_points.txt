@@ -1,8 +1,0 @@
-[databroker.ingestors]
-application/x-hdf = package1.ingestors:tomo_ingestor
-image/tiff = package1.ingestors:tiff_ingestor
-
-[databroker.sniffers]
-application/x-hdf = package1.sniffers:hdf_sniffer
-image/tiff = package1.sniffers:tiff_sniffer
-
