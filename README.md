@@ -30,7 +30,14 @@ filename (filenames?) and return a boolean.
 ingestor.is_applicable(filename)
 ```
 
-That's the complete public interface. Example:
+That's the complete public interface.
+
+Here is a runnable example. It includes:
+
+* a script for generating example data files
+* ``ingest.py``, providing the "user API" that might go into databroker
+* ``package1`` which provides some sniffers and ingestors for TIFF and HDF5
+* ``package2`` which provides another ingestor for HDF5
 
 ```
 $ python generate_example_files.py
