@@ -25,10 +25,13 @@ def tiff_ingestor(filename):
 
     It is applicable for all known 'image/tiff' files.
     """
-    if tifffile.imread(filename).ndim == 2:
+    ndim = tifffile.imread(filename).ndim
+    if ndim == 2:
         yield from ingest_plane(filename)
-    if tifffile.imread(filename).ndim == 3:
+    elif ndim == 3:
         yield from ingest_stack(filename)
+    else:
+        raise ValueError(f"Where did you get an {ndim}-dimensional TIFF???")
 
 
 def is_applicable(is_applicable_func):

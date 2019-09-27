@@ -21,7 +21,7 @@ def ingestor(filename):
 ```
 
 The ingestor may, internally, examine the file strucutre (e.g. TIFF plane vs stack) and
-dispatch out to other functions, but that's an internal detail up the
+dispatch out to other functions, but that's an internal detail up to the
 implementation. Additionally, functions registered as ``'databroker.ingestors'``
 MAY implement an attribute ``is_applicable``. If implemented, it must accept a
 filename (filenames?) and return a boolean.
