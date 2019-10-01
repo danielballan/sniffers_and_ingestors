@@ -20,9 +20,14 @@ def detect_mimetype(filename):
     """
     # First rely on custom "sniffers" that can employ file signatures (magic
     # numbers) or any other format-specific tricks to extract a mimetype.
+    with open(filename, 'rb') as file:
+        # The choice of 64 bytes is arbitrary. We may increase this in the
+        # future if we discover reason to. Therefore, sniffers should not
+        # assume that they will receive this exact number of bytes.
+        first_bytes = file.read(64)
     for ep in entrypoints.get_group_all('databroker.sniffers'):
         content_sniffer = ep.load()
-        mimetype = content_sniffer(filename)
+        mimetype = content_sniffer(filename, first_bytes)
         if mimetype is not None:
             return mimetype
             # TODO Instead of bailing when we get the first match, we might

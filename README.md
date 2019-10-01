@@ -1,10 +1,11 @@
 # Example ingestors
 
 There are two interfaces. Functions registered as ``'databroker.sniffers'``
-must accept a filename (filenames?) and return a mimetype or None.
+must accept a filename (filenames?) and the first several bytes of the file
+and return a mimetype or None.
 
 ```python
-def sniifer(filename):
+def sniffer(filename, first_bytes):
     if ...:
         return 'some_mimetype'
     # Implicitly return None if we don't recognize this file.

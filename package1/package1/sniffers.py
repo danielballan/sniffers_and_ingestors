@@ -1,14 +1,12 @@
-def tiff_sniffer(filename):
+def tiff_sniffer(filename, first_bytes):
     SIGNATURE = b'\x49\x49\x2A\x00'
-    with open(filename, 'rb') as file:
-        if file.read(64).startswith(SIGNATURE):
-            return 'image/tiff'
+    if first_bytes.startswith(SIGNATURE):
+        return 'image/tiff'
     # ...and/or potentially any other means of identifying a TIFF file...
 
 
-def hdf_sniffer(filename):
+def hdf_sniffer(filename, first_bytes):
     SIGNATURE = b'\x89HDF\r\n\x1a\n'
-    with open(filename, 'rb') as file:
-        if file.read(64).startswith(SIGNATURE):
-            return 'application/x-hdf'
+    if first_bytes.startswith(SIGNATURE):
+        return 'application/x-hdf'
     # ...and/or potentially any other means of identifying an HDF file...
