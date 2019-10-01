@@ -34,6 +34,16 @@ def tiff_ingestor(filename):
         raise ValueError(f"Where did you get an {ndim}-dimensional TIFF???")
 
 
+def csv_ingestor(filename):
+    """
+    This is registered for the 'text/csv' mimetype.
+
+    It is applicable to all known 'text/csv' files.
+    """
+    print("I am ingesting a CSV file!")
+    yield 'start', {}
+
+
 def is_applicable(is_applicable_func):
     "A decorator that monkey-patches the decorated function"
     def decorator(func):

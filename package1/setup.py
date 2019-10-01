@@ -11,6 +11,7 @@ setup(
        ],
        'databroker.ingestors': [
            'image/tiff = package1.ingestors:tiff_ingestor',
+           'text/csv= package1.ingestors:csv_ingestor',
            'application/x-hdf= package1.ingestors:tomo_ingestor',
         ]},
     )

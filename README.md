@@ -80,6 +80,12 @@ In [10]: gen = ingest.ingest_file('confounding_example.h5')
 In [11]: next(gen)                                                                                                                                                                            
 I am ingesting an HDF5 file with a saxs layout!
 Out[11]: ('start', {})
+
+In [12]: gen = ingest.ingest_file('tabular_data.csv')
+
+In [13]: next(gen)
+I am ingesting a CSV file!
+Out[13]: ('start', {})
 ```
 
 This example includes two packages, creatively named ``package1`` and
@@ -93,3 +99,7 @@ This example includes two packages, creatively named ``package1`` and
   doesn't need to know about file signature or worry about possible file
   extneions. They just write a function that knows it will receive an HDF5 file
   and goes from there.
+* If a file extension is the best or only way to identify a format, then there
+  is no need to register a sniffer for it. The CSV example is identified via its
+  file extension using just ``mimetypes`` automatic configuration; no CSV
+  sniffer is defined.
