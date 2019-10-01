@@ -64,3 +64,8 @@ def tomo_ingestor(filename):
     # TODO
     yield 'start', {}
     ...
+
+
+def madeup_format_ingestor(filename):
+    print("I am ingesting a 'madeup format' file!")
+    yield 'start', {}

@@ -13,6 +13,7 @@ setup(
            'image/tiff = package1.ingestors:tiff_ingestor',
            'text/csv= package1.ingestors:csv_ingestor',
            'application/x-hdf= package1.ingestors:tomo_ingestor',
+           'application/x-madeup= package1.ingestors:madeup_format_ingestor',
         ]},
     )
 

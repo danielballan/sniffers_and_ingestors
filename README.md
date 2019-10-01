@@ -86,6 +86,13 @@ In [12]: gen = ingest.ingest_file('tabular_data.csv')
 In [13]: next(gen)
 I am ingesting a CSV file!
 Out[13]: ('start', {})
+
+In [14]: gen = ingest.ingest_file('custom_format_example.madeup')
+
+In [15]: next(gen)
+I am ingesting a 'madeup format' file!
+Out[15]: ('start', {})
+
 ```
 
 This example includes two packages, creatively named ``package1`` and

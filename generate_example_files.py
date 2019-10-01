@@ -13,6 +13,8 @@ def main():
     tifffile.imsave('example_stack.tiff', numpy.ones((5, 100, 100)))
     with open('tabular_data.csv', 'w') as file:
         file.write('a,b,c\r\n1,2,3\r\n4,5,6')
+    with open('custom_format_example.madeup', 'wb') as file:
+        file.write(b'beepboop')
 
     # some edge cases
     with h5py.File('confounding_example.h5', 'w') as file:
