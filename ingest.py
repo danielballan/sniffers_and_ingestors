@@ -42,17 +42,15 @@ def detect_mimetype(filename):
         return mimetype
 
 
-def choose_ingestor(filename, mimetype):
+def applicable_ingestors(filename, mimetype):
     """
-    Take in a filename and its mimetype; return a generator instance.
+    Take in a filename and its mimetype; return a list of compatible ingestors.
     """
     # Find ingestor(s) for this mimetype.
     ingestors = []
     for ep in entrypoints.get_group_all('databroker.ingestors'):
         if ep.name == mimetype:
             ingestors.append(ep.load())
-    if not ingestors:
-        raise NoIngestor(f"No ingestors avaialble for mimetype {mimetype}")
     # Let each ingestor look at the content of this file and decide if it
     # thinks it can handle it. An ingestor *may* implement 'is_applicable' to
     # do this. If it does not implement 'is_applicable', it is assumed to be
@@ -61,6 +59,17 @@ def choose_ingestor(filename, mimetype):
         if hasattr(ingestor, 'is_applicable'):
             if not ingestor.is_applicable(filename):
                 ingestors.remove(ingestor)
+    return ingestors
+
+
+def choose_ingestor(filename, mimetype):
+    """
+    Take in a filename and its mimetype; return an ingestor.
+
+    If multiple are found, return the first one (deterministic but arbitrary).
+    If none are found, raise.
+    """
+    ingestors = applicable_ingestors(filename, mimetype)
     if not ingestors:
         raise NoIngestor(f"No ingestors were applicable to {filename}")
     elif len(ingestors) > 1:
